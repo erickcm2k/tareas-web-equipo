@@ -55,7 +55,7 @@ public class ServletPrincipal extends HttpServlet {
                 out.println("</td>");
                 out.println("<td>");
                 out.println("|<a href=\"ServletLeer?idProblema="+i+"\">Leer usuario</a>|");
-                out.println("|<a href=\"ServletCrear?idProblema="+i+"\">Modificar Usuario</a>|");
+                out.println("|<a href=\"ServletUpdate?idProblema="+i+"\">Modificar Usuario</a>|");
                 out.println("|<a href=\"ServletBorrar?idProblema="+i+"\" onclick=\"return confirm('Quieres borrar el problema?')\">Borrar Usuario</a>|");
                 out.println("</td>");
                 out.println("</tr>");
