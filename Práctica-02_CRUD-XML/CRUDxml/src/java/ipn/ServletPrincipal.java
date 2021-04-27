@@ -37,7 +37,7 @@ public class ServletPrincipal extends HttpServlet {
             out.println("<div class=\"container\">");
             out.println("<hr>");
             out.println("<h2>Crear altas, bajas y cambios</h2>");
-            out.println("<a href='ServletCrear'>Crear nuevo usuario.</a>");
+            out.println("<a href='ServletCrear'>Crear pregunta.</a>");
             out.println("<hr>");
             out.println("<table class=\"table table-hover\">");
             out.println("<thead>");
@@ -50,15 +50,16 @@ public class ServletPrincipal extends HttpServlet {
             for (int i = 0; i < list.size(); i++) {
                 Element node = (Element) list.get(i);
                 out.println("<tr>");
+                if(node.getAttributeValue("TEXTO")!=null){
                 out.println("<td>");
                 out.println(node.getAttributeValue("TEXTO"));
                 out.println("</td>");
                 out.println("<td>");
                 out.println("|<a href=\"ServletLeer?idProblema="+i+"\">Leer usuario</a>|");
-                out.println("|<a href=\"ServletUpdate?idProblema="+i+"\">Modificar Usuario</a>|");
+                out.println("|<a href=\"ServletCrear?idProblema="+i+"\">Modificar Usuario</a>|");
                 out.println("|<a href=\"ServletBorrar?idProblema="+i+"\" onclick=\"return confirm('Quieres borrar el problema?')\">Borrar Usuario</a>|");
                 out.println("</td>");
-                out.println("</tr>");
+                out.println("</tr>");}
             }
             out.println("</tbody>");
             out.println("</table>");
