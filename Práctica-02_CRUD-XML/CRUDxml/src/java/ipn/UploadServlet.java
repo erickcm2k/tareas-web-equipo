@@ -75,7 +75,7 @@ public class UploadServlet extends HttpServlet {
         // maximum file size to be uploaded.
         upload.setSizeMax(maxFileSize);
         /////////////////////////////////////////////////
-    try{
+        try {
             // Parse the request to get file items.
             List fileItems = upload.parseRequest(request);
             // Process the uploaded file items
@@ -139,7 +139,7 @@ public class UploadServlet extends HttpServlet {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        try{
+        try {
             String ruta = request.getRealPath("/");
             SAXBuilder builder = new SAXBuilder();
             File xmlFile = new File(ruta + "pregunta.xml");
@@ -191,10 +191,11 @@ public class UploadServlet extends HttpServlet {
             xmlOutput.output(document, writer);
             writer.flush();
             writer.close();
-            } catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
         throw new ServletException("GET method used with "

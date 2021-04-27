@@ -50,16 +50,17 @@ public class ServletPrincipal extends HttpServlet {
             for (int i = 0; i < list.size(); i++) {
                 Element node = (Element) list.get(i);
                 out.println("<tr>");
-                if(node.getAttributeValue("TEXTO")!=null){
-                out.println("<td>");
-                out.println(node.getAttributeValue("TEXTO"));
-                out.println("</td>");
-                out.println("<td>");
-                out.println("|<a href=\"ServletLeer?idProblema="+i+"\">Leer usuario</a>|");
-                out.println("|<a href=\"ServletCrear?idProblema="+i+"\">Modificar Usuario</a>|");
-                out.println("|<a href=\"ServletBorrar?idProblema="+i+"\" onclick=\"return confirm('Quieres borrar el problema?')\">Borrar Usuario</a>|");
-                out.println("</td>");
-                out.println("</tr>");}
+                if (node.getAttributeValue("TEXTO") != null) {
+                    out.println("<td>");
+                    out.println(node.getAttributeValue("TEXTO"));
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("|<a href=\"ServletLeer?idProblema=" + i + "\">Leer usuario</a>|");
+                    out.println("|<a href=\"ServletModificarFormulario?idProblema=" + i + "\">Modificar Usuario</a>|");
+                    out.println("|<a href=\"ServletBorrar?idProblema=" + i + "\" onclick=\"return confirm('Quieres borrar el problema?')\">Borrar Usuario</a>|");
+                    out.println("</td>");
+                    out.println("</tr>");
+                }
             }
             out.println("</tbody>");
             out.println("</table>");

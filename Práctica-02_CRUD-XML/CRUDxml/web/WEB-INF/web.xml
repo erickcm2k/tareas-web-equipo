@@ -20,6 +20,14 @@
         <servlet-name>ServletLeer</servlet-name>
         <servlet-class>ipn.ServletLeer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletModificar</servlet-name>
+        <servlet-class>ipn.ServletModificar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletModificarFormulario</servlet-name>
+        <servlet-class>ipn.ServletModificarFormulario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCrear</servlet-name>
         <url-pattern>/ServletCrear</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>ServletLeer</servlet-name>
         <url-pattern>/ServletLeer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModificar</servlet-name>
+        <url-pattern>/ServletModificar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModificarFormulario</servlet-name>
+        <url-pattern>/ServletModificarFormulario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
