@@ -65,14 +65,14 @@ const Home = () => {
                 <Td>
                   <Link to={`see?id=${e.id}`}>
                     <Button colorScheme="green" size="md">
-                      Ver pregunta
+                      Ver
                     </Button>
                   </Link>
                 </Td>
                 <Td>
                   <Link to={`modify?id=${e.id}`}>
                     <Button colorScheme="yellow" size="md">
-                      Modificar pregunta
+                      Modificar
                     </Button>
                   </Link>
                 </Td>
@@ -82,7 +82,7 @@ const Home = () => {
                     size="md"
                     onClick={() => setIsOpen(true)}
                   >
-                    Borrar pregunta
+                    Borrar
                   </Button>
                 </Td>
               </Tr>

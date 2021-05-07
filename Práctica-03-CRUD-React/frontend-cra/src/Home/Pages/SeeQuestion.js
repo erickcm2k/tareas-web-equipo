@@ -25,12 +25,8 @@ const SeeQuestion = () => {
         });
     };
     getQuestionData();
-    console.log(questionData);
-  }, []);
+  }, [id]);
 
-  if (questionData) {
-    console.log(questionData.drags[0]);
-  }
   return (
     <>
       {!questionData ? (
@@ -39,14 +35,19 @@ const SeeQuestion = () => {
         <Stack spacing={3}>
           <Heading>Pregunta #{questionData.id}</Heading>
 
-          <Text fontSize='2xl'>{questionData.pregunta}</Text>
+          <Text fontSize="2xl">{questionData.pregunta}</Text>
           <Text>Respuestas: {questionData.respuesta}</Text>
           <Heading size="md">Drags</Heading>
           <Flex direction="row" justifyContent="space-evenly">
             {questionData.drags.map((drag) => {
               return (
-                <Box>
-                  <Image borderRadius="full" pb="2" src={drag.imagen} alt={drag.valor}></Image>
+                <Box key={drag.valor}>
+                  <Image
+                    borderRadius="full"
+                    pb="2"
+                    src={drag.imagen}
+                    alt={drag.valor}
+                  ></Image>
                   <Text align="center" key={uuidv4()}>
                     {drag.valor}
                   </Text>
@@ -58,8 +59,13 @@ const SeeQuestion = () => {
           <Flex direction="row" justifyContent="space-evenly">
             {questionData.targets.map((target) => {
               return (
-                <Box>
-                  <Image borderRadius="full" pb="2" src={target.imagen} alt={target.valor}></Image>
+                <Box key={target.valor}>
+                  <Image
+                    borderRadius="full"
+                    pb="2"
+                    src={target.imagen}
+                    alt={target.valor}
+                  ></Image>
                   <Text align="center" key={uuidv4()}>
                     {target.valor}
                   </Text>
