@@ -13,6 +13,7 @@ const SeeQuestion = () => {
 
   // const id = useParams().id;
   const id = new URLSearchParams(window.location.search).get("id");
+
   useEffect(() => {
     const getQuestionData = async () => {
       await axios

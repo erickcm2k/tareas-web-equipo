@@ -1,13 +1,15 @@
 import React, { useReducer } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 const QuestionForm = () => {
+  const id = new URLSearchParams(window.location.search).get("id");
+
   const initialValues = {
-    // question: "",
-    // questionName: "",
-    // answer: "",
+    question: "",
+    questionName: "",
+    answer: "",
     // drag1: "",
     // drag2: "",
     // drag3: "",
@@ -53,6 +55,9 @@ const QuestionForm = () => {
   //   targetFile4,
   // } = formData;
   const {
+    question,
+    questionName,
+    answer,
     dragFile1,
     dragFile2,
     dragFile3,
@@ -75,24 +80,36 @@ const QuestionForm = () => {
   };
 
   const submitForm = (e) => {
+    e.preventDefault();
+    let url = "";
+    // Si hay un id, se trata de una nueva pregunta
+    // sino, se modificara la pregunta con el id obtenido.
+    !id
+      ? (url = "http://localhost:8000/upload")
+      : (url = `http://localhost:8000/upload?id=${id}`);
+    
     const data = new FormData();
     data.append("file", dragFile1);
     data.append("file", dragFile2);
     data.append("file", dragFile3);
     data.append("file", dragFile4);
+    data.append("questionName", questionName);
+    data.append("question", question);
+    data.append("answer", answer);
     // data.append("file", targetFile1);
     // data.append("file", targetFile2);
     // data.append("file", targetFile3);
     // data.append("file", targetFile4);
 
-    e.preventDefault();
-
     axios
-      .post("http://localhost:8000/upload", data, {})
+      .post(url, data, {})
 
       .then((res) => {
-        console.log(res);
+        console.log(res.statusText);
         console.log(formData);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -100,8 +117,8 @@ const QuestionForm = () => {
     <Stack spacing="3">
       <Heading size="xl">Ingrese los datos de la pregunta</Heading>
       <Text fontSize="xl">Es necesario llenar todos los campos.</Text>
-      <form onSubmit={submitForm}>
-        {/* <FormControl paddingTop="4">
+      <form onSubmit={submitForm} encType="multipart/form-data">
+        <FormControl paddingTop="4">
           <FormLabel>Nombre de la pregunta</FormLabel>
           <Input
             type="text"
@@ -127,7 +144,7 @@ const QuestionForm = () => {
             value={answer}
             onChange={handleFormChange}
           />
-        </FormControl> */}
+        </FormControl>
         <Flex direction="row" paddingTop="5">
           <FormControl>
             <Heading size="lg" paddingBottom="4">

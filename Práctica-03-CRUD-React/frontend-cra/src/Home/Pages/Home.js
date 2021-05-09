@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   Table,
   Thead,
@@ -7,10 +8,6 @@ import {
   Th,
   Td,
   TableCaption,
-} from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
-import {
   AlertDialog,
   AlertDialogBody,
   AlertDialogFooter,
@@ -18,8 +15,9 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-
+import { Text } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
+import axios from "axios";
 const data = [
   {
     text:
@@ -39,9 +37,23 @@ const data = [
 ];
 
 const Home = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
-  const cancelRef = React.useRef();
+  const cancelRef = useRef();
+  const [idToEliminate, setIdToEliminate] = useState(null);
+
+  const deleteQuestion = () => {
+    console.log(`Pregunta ${idToEliminate} está siendo eliminada.`);
+    // Usar hasta que esté lista la ruta de eliminar.
+    // await axios
+    //   .delete(http://localhost:8000, { id })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  };
 
   return (
     <>
@@ -58,10 +70,12 @@ const Home = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {data.map((e) => {
+          {data.map((e, index) => {
             return (
               <Tr key={e.id}>
-                <Td>{e.text}</Td>
+                <Td>
+                  {Number(index + 1)}.- {e.text}
+                </Td>
                 <Td>
                   <Link to={`see?id=${e.id}`}>
                     <Button colorScheme="green" size="md">
@@ -80,7 +94,10 @@ const Home = () => {
                   <Button
                     colorScheme="red"
                     size="md"
-                    onClick={() => setIsOpen(true)}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setIdToEliminate(e.id);
+                    }}
                   >
                     Borrar
                   </Button>
@@ -89,34 +106,40 @@ const Home = () => {
             );
           })}
         </Tbody>
-
-        <AlertDialog
-          isOpen={isOpen}
-          leastDestructiveRef={cancelRef}
-          onClose={onClose}
-        >
-          <AlertDialogOverlay>
-            <AlertDialogContent>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                Borrar pregunta
-              </AlertDialogHeader>
-
-              <AlertDialogBody>
-                ¿Realmente desea borrar la pregunta?
-              </AlertDialogBody>
-
-              <AlertDialogFooter>
-                <Button ref={cancelRef} onClick={onClose}>
-                  Cancelar
-                </Button>
-                <Button colorScheme="red" onClick={onClose} ml={3}>
-                  Borrar
-                </Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialogOverlay>
-        </AlertDialog>
       </Table>
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Borrar pregunta
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              ¿Realmente desea borrar la pregunta?
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                Cancelar
+              </Button>
+              <Button
+                colorScheme="red"
+                onClick={() => {
+                  deleteQuestion();
+                  onClose();
+                }}
+                ml={3}
+              >
+                Borrar
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </>
   );
 };
