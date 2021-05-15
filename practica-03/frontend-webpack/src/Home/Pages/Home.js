@@ -16,20 +16,22 @@ import axios from "axios";
 const Home = () => {
   const [questions, setQuestions] = useState(null);
 
+  // Solicitar las preguntas al momento de que cargue la página.
   useEffect(() => {
-    const getQuestions = async () => {
-      await axios
-        .get("http://localhost:8080/Crud_React/Preguntas")
-        .then((res) => {
-          setQuestions(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
     getQuestions();
   }, []);
+
+  const getQuestions = async () => {
+    await axios
+      .get("http://localhost:8080/Crud_React/Preguntas")
+      .then((res) => {
+        setQuestions(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const deleteQuestion = (id) => {
     alert(`La pregunta ${id} será eliminada.`);
@@ -38,9 +40,11 @@ const Home = () => {
       .get(url)
       .then((res) => {
         console.log(res);
+        getQuestions();
       })
       .catch((err) => {
         console.log(err);
+        alert("Error, la pregunta no pudo ser eliminada.");
       });
   };
 
