@@ -20,6 +20,7 @@ const SeeQuestion = () => {
         .get(`http://localhost:8080/Crud_React/Preguntas?id=${id}`)
         .then((res) => {
           setQuestionData(res.data[0]);
+          console.log(res.data[0]);
         })
         .catch((err) => {
           console.log(err);

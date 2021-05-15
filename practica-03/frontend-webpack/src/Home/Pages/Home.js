@@ -22,6 +22,7 @@ const Home = () => {
         .get("http://localhost:8080/Crud_React/Preguntas")
         .then((res) => {
           setQuestions(res.data);
+          console.log(res.data);
         })
         .catch((err) => {
           console.log(err);

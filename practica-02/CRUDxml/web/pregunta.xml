@@ -1,5 +1,5 @@
 <RELACION_DE_COLUMNAS PLANTILLA="prototipo_RC.swf">
-<PREGUNTA TEXTO="Relacione los presidentes mostrados abajo con su respectiva nacion"
+<PREGUNTA TEXTO="Relacione los presidentes mostrados abajo con su respectiva nacion."
 RESPUESTA="OP1-3;OP2-4;OP3-1;OP4-2">
 <DRAGS>
 <OPCION IMAGEN="presidente2.jpg"> Fidel Castro </OPCION>
@@ -14,7 +14,7 @@ RESPUESTA="OP1-3;OP2-4;OP3-1;OP4-2">
 <OPCION IMAGEN="nacion4.jpg"> Estados Unidos </OPCION>
 </TARGETS>
 </PREGUNTA>
-<PREGUNTA TEXTO="Pureba 2"
+<PREGUNTA TEXTO="Soy otra pregunta"
 RESPUESTA="OP1-3;OP2-4;OP3-1;OP4-2">
 <DRAGS>
 <OPCION IMAGEN="presidente2.jpg"> Fidel Castro </OPCION>

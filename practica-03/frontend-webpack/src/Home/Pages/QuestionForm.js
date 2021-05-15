@@ -53,7 +53,7 @@ const QuestionForm = () => {
     // sino, se trata de una nueva pregunta e ira a la ruta Create.
     !id
       ? (url = `http://localhost:8080/Crud_React/Create?${formFields}`)
-      : (url = `http://localhost:8080/Crud_React/Update?${formFields}?id=${id}`);
+      : (url = `http://localhost:8080/Crud_React/Update?${formFields}&id=${id}`);
 
     axios
       .get(url)
