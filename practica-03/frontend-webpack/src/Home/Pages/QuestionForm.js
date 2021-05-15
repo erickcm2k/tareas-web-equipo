@@ -10,22 +10,14 @@ const QuestionForm = () => {
     question: "",
     questionName: "",
     answer: "",
-    // drag1: "",
-    // drag2: "",
-    // drag3: "",
-    // drag4: "",
-    dragFile1: null,
-    dragFile2: null,
-    dragFile3: null,
-    dragFile4: null,
-    // target1: "",
-    // target2: "",
-    // target3: "",
-    // target4: "",
-    // targetFile1: null,
-    // targetFile2: "",
-    // targetFile3: "",
-    // targetFile4: "",
+    drag1: "",
+    drag2: "",
+    drag3: "",
+    drag4: "",
+    target1: "",
+    target2: "",
+    target3: "",
+    target4: "",
   };
 
   const [formData, setFormData] = useReducer(
@@ -33,80 +25,40 @@ const QuestionForm = () => {
     initialValues
   );
 
-  // const {
-  //   questionName,
-  //   question,
-  //   answer,
-  //   drag1,
-  //   drag2,
-  //   drag3,
-  //   drag4,
-  //   dragFile1,
-  //   dragFile2,
-  //   dragFile3,
-  //   dragFile4,
-  //   target1,
-  //   target2,
-  //   target3,
-  //   target4,
-  //   targetFile1,
-  //   targetFile2,
-  //   targetFile3,
-  //   targetFile4,
-  // } = formData;
   const {
     question,
     questionName,
     answer,
-    dragFile1,
-    dragFile2,
-    dragFile3,
-    dragFile4,
-    // targetFile1,
-    // targetFile2,
-    // targetFile3,
-    // targetFile4,
+    drag1,
+    drag2,
+    drag3,
+    drag4,
+    target1,
+    target2,
+    target3,
+    target4,
   } = formData;
 
   const handleFormChange = (event) => {
-    const { name } = event.target;
-    if (event.target.files) {
-      const file = event.target.files[0];
-      setFormData({ [name]: file });
-    } else {
-      const { value } = event.target;
-      setFormData({ [name]: value });
-    }
+    const { name, value } = event.target;
+    setFormData({ [name]: value });
   };
 
   const submitForm = (e) => {
     e.preventDefault();
     let url = "";
-    // Si hay un id, se trata de una nueva pregunta
-    // sino, se modificara la pregunta con el id obtenido.
+    const formFields = `question=${question}&questionName=${questionName}&answer=${answer}&drag1=${drag1}&drag2=${drag2}&drag3=${drag3}&drag4=${drag4}&target1=${target1}&target2=${target2}&target3=${target3}&target4=${target4}`;
+
+    // Si hay un id en el url, irá a la ruta Update
+    // sino, se trata de una nueva pregunta e ira a la ruta Create.
     !id
-      ? (url = "http://localhost:8000/upload")
-      : (url = `http://localhost:8000/upload?id=${id}`);
-    
-    const data = new FormData();
-    data.append("file", dragFile1);
-    data.append("file", dragFile2);
-    data.append("file", dragFile3);
-    data.append("file", dragFile4);
-    data.append("questionName", questionName);
-    data.append("question", question);
-    data.append("answer", answer);
-    // data.append("file", targetFile1);
-    // data.append("file", targetFile2);
-    // data.append("file", targetFile3);
-    // data.append("file", targetFile4);
+      ? (url = `http://localhost:8080/Crud_React/Create?${formFields}`)
+      : (url = `http://localhost:8080/Crud_React/Update?${formFields}?id=${id}`);
 
     axios
-      .post(url, data, {})
-
+      .get(url)
       .then((res) => {
-        console.log(res.statusText);
-        console.log(formData);
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -147,79 +99,83 @@ const QuestionForm = () => {
         </FormControl>
         <Flex direction="row" paddingTop="5">
           <FormControl>
-            <Heading size="lg" paddingBottom="4">
-              Drags
-            </Heading>
-            {/* <Input
-              placeholder="Drag 1"
-              type="text"
-              width="30%"
-              name="drag1"
-              value={drag1}
-              onChange={handleFormChange}
-              required
-            ></Input> */}
-            <input
-              type="file"
-              name="dragFile1"
-              onChange={handleFormChange}
-              required
-            />
-            {/* <Input placeholder="Drag 2" type="text" width="30%"></Input> */}
-            <input
-              type="file"
-              name="dragFile2"
-              onChange={handleFormChange}
-              required
-            />
-            {/* <Input placeholder="Drag 3" type="text" width="30%"></Input> */}
-            <input
-              type="file"
-              name="dragFile3"
-              onChange={handleFormChange}
-              required
-            />
-            {/* <Input placeholder="Drag 4" type="text" width="30%"></Input> */}
-            <input
-              type="file"
-              name="dragFile4"
-              onChange={handleFormChange}
-              required
-            />
+            <Stack spacing="3">
+              <Heading size="lg" paddingBottom="4">
+                Drags
+              </Heading>
+              <Input
+                placeholder="Drag 1"
+                type="text"
+                name="drag1"
+                value={drag1}
+                onChange={handleFormChange}
+                required
+              ></Input>
+              <Input
+                placeholder="Drag 2"
+                type="text"
+                name="drag2"
+                value={drag2}
+                onChange={handleFormChange}
+                required
+              ></Input>
+              <Input
+                placeholder="Drag 3"
+                type="text"
+                name="drag3"
+                value={drag3}
+                onChange={handleFormChange}
+                required
+              ></Input>
+              <Input
+                placeholder="Drag 4"
+                type="text"
+                name="drag4"
+                value={drag4}
+                onChange={handleFormChange}
+                required
+              ></Input>
+            </Stack>
           </FormControl>
-          {/* <FormControl>
-            <Heading size="lg" paddingBottom="4">
-              Targets
-            </Heading>
-            <Input placeholder="Target 1" type="text" width="30%"></Input>
-            <input
-              type="file"
-              name="targetFile1"
-              onChange={handleFormChange}
-              required
-            />
-            <Input placeholder="Target 2" type="text" width="30%"></Input>
-            <input
-              type="file"
-              name="targetFile2"
-              onChange={handleFormChange}
-              required
-            />
-            <Input placeholder="Target 3" type="text" width="30%"></Input>
-            <input
-              type="file"
-              name="targetFile3"
-              onChange={handleFormChange}
-              required
-            />
-            <Input placeholder="Target 4" type="text" width="30%"></Input>
-            <input
-              type="file"
-              name="targetFile4"
-              onChange={handleFormChange}
-              required
-            />
-          </FormControl> */}
+          <FormControl>
+            <Stack spacing="3">
+              <Heading size="lg" paddingBottom="4">
+                Targets
+              </Heading>
+              <Input
+                placeholder="Target 1"
+                type="text"
+                name="target1"
+                value={target1}
+                onChange={handleFormChange}
+                required
+              ></Input>
+              <Input
+                placeholder="Target 2"
+                type="text"
+                name="target2"
+                value={target2}
+                onChange={handleFormChange}
+                required
+              ></Input>
+              <Input
+                placeholder="Target 3"
+                type="text"
+                name="target3"
+                value={target3}
+                onChange={handleFormChange}
+                required
+              ></Input>
+              <Input
+                placeholder="Target 4"
+                type="text"
+                name="target4"
+                value={target4}
+                onChange={handleFormChange}
+                required
+              ></Input>
+            </Stack>
+          </FormControl>
         </Flex>
         <Link to="/">
           <Button m="4" colorScheme="blue" type="submit">

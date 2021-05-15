@@ -31,10 +31,17 @@ const SeeQuestion = () => {
   return (
     <>
       {!questionData ? (
-        <h1>Error</h1>
+        <>
+          <Text fontSize="xl" align="center" pt="6">
+            No fue posible obtener los datos de la pregunta.
+          </Text>
+          <Text fontSize="xl" pt="4">
+            Se trata de un error con el servidor.
+          </Text>
+        </>
       ) : (
         <Stack spacing={3}>
-          <Heading>Pregunta #{questionData.id}</Heading>
+          <Heading>Datos de la pregunta</Heading>
 
           <Text fontSize="2xl">{questionData.pregunta}</Text>
           <Text>Respuestas: {questionData.respuesta}</Text>
