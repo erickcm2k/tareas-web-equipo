@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
@@ -59,9 +59,12 @@ const QuestionForm = () => {
       .get(url)
       .then((res) => {
         console.log(res);
+        alert("La pregunta ha sido modificada exitosamente.");
+        alert("Presione el botón Volver.");
       })
       .catch((err) => {
         console.log(err);
+        alert("La pregunta no se pudo modificar.");
       });
   };
 

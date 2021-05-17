@@ -5,12 +5,21 @@
  */
 package Api;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
 /**
  *
@@ -18,19 +27,54 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Delete extends HttpServlet {
 
-    private PrintWriter outter;
+    private PrintWriter outter;    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            outter = response.getWriter();
-            int id = (Integer.parseInt(request.getParameter("id")) - 1);
+        response.setContentType("application/json");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        outter = response.getWriter();
+        String path = request.getRealPath("/");
+        int id = (Integer.parseInt(request.getParameter("id")) - 1);
 
-            response.setContentType("application/json");
-            response.addHeader("Access-Control-Allow-Origin", "*");
-            outter.write("Se ha eliminado la pregunta con id: " + (id + 1));
+        try {
+            SAXBuilder builder = new SAXBuilder();
+            File xmlFile = new File(path + "preguntas.xml");
+            Document document = (Document) builder.build(xmlFile);
+
+            Element root = document.getRootElement();
+            List list = root.getChildren("PREGUNTA");
+
+            boolean shouldEliminate = false;
+            int indexToEliminate = -1;
+            for (int i = 0; i < list.size(); i++) {
+                Element elemento = (Element) list.get(i);
+                int tempId = Integer.parseInt(elemento.getAttributeValue("ID"));
+                if ((tempId - 1) == id) {
+                    shouldEliminate = true;
+                    indexToEliminate = i;
+                }
+
+            }
+
+            if (shouldEliminate) {
+                list.remove(indexToEliminate);
+            } else {
+                throw new Error();
+            }
+
+            XMLOutputter xmlOutput = new XMLOutputter();
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            FileWriter writer = new FileWriter(path + "preguntas.xml");
+            xmlOutput.output(document, writer);
+
+        } catch (IOException | JDOMException e) {
+            outter.write("No ha sido posible eliminar la pregunta con id: " + (id + 1));
+            e.printStackTrace();
         }
+
+        outter.write("Se ha eliminado la pregunta con id: " + (id + 1));
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
