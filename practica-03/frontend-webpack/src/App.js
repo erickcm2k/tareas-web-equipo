@@ -26,7 +26,7 @@ function App() {
               <SeeQuestion />
             </Route>
 
-            <Route exact path="/create">
+            <Route exact path="/new">
               <QuestionForm />
             </Route>
 

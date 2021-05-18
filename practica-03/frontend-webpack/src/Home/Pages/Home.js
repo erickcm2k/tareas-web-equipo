@@ -53,7 +53,7 @@ const Home = () => {
       <Text fontSize="6xl" align="center">
         CRUD de preguntas
       </Text>
-      <Link to="create">
+      <Link to="new">
         <Button colorScheme="blue">Crear nueva pregunta</Button>
       </Link>
       {questions ? (

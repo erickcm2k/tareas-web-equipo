@@ -59,12 +59,20 @@ const QuestionForm = () => {
       .get(url)
       .then((res) => {
         console.log(res);
-        alert("La pregunta ha sido modificada exitosamente.");
+        alert(
+          !id
+            ? "La pregunta ha sido creada exitosamente."
+            : "La pregunta ha sido modificada exitosamente."
+        );
         alert("Presione el botón Volver.");
       })
       .catch((err) => {
         console.log(err);
-        alert("La pregunta no se pudo modificar.");
+        alert(
+          !id
+            ? "La pregunta no se pudo modificar."
+            : "La pregunta no se pudo crear."
+        );
       });
   };
 
