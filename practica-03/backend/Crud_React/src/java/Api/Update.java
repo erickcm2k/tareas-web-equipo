@@ -73,8 +73,18 @@ public class Update extends HttpServlet {
             Element rootNode = doc.getRootElement();
 
             List listaPreguntas = rootNode.getChildren("PREGUNTA");
+            int currentId = -1;
+            // Buscamos el id de la pregunta.
+            for (int i = 0; i < listaPreguntas.size(); i++) {
+                Element elemento = (Element) listaPreguntas.get(i);
+                int tempId = Integer.parseInt(elemento.getAttributeValue("ID"));
+                if ((tempId - 1) == id) {
+                    currentId = i;
+                }
 
-            Element elementPregunta = (Element) listaPreguntas.get(id);
+            }
+
+            Element elementPregunta = (Element) listaPreguntas.get(currentId);
 
             // Reemplazar TEXTO y RESPUESTA
             elementPregunta.getAttribute("TEXTO").setValue(nombrePregunta);

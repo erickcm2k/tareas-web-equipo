@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
@@ -70,8 +70,8 @@ const QuestionForm = () => {
         console.log(err);
         alert(
           !id
-            ? "La pregunta no se pudo modificar."
-            : "La pregunta no se pudo crear."
+            ? "La pregunta no se pudo crear."
+            : "La pregunta no se pudo modificar."
         );
       });
   };
