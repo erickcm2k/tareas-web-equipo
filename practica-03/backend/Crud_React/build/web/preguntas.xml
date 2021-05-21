@@ -1,33 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RELACION_DE_COLUMNAS>
-  <PREGUNTA ID="1" TEXTO="Una simple pregunta de prueba" RESPUESTA="OP1-3;OP2-4;OP3-1;OP4-2">
-    <DRAGS>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Fidel Castro</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">George W. Bush</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Vidente Fox</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Ricardo Lagos</OPCION>
-    </DRAGS>
-    <TARGETS>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Mexico</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Chile</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Cuba</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Estados Unidos</OPCION>
-    </TARGETS>
-  </PREGUNTA>
-  <PREGUNTA ID="2" TEXTO="Otra pregunta de prueba" RESPUESTA="OP1-3;OP2-4;OP3-1;OP4-2">
-    <DRAGS>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Fidel Castro</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">George W. Bush</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Vidente Fox</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Ricardo Lagos</OPCION>
-    </DRAGS>
-    <TARGETS>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Mexico</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Chile</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Cuba</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">Estados Unidos</OPCION>
-    </TARGETS>
-  </PREGUNTA>
   <PREGUNTA TEXTO="ULTIMA CREACION" RESPUESTA="ULTIMA RESPUESTA" ID="4677">
     <DRAGS>
       <OPCION IMAGEN="https://via.placeholder.com/150">UT1</OPCION>
@@ -42,18 +14,18 @@
       <OPCION IMAGEN="https://via.placeholder.com/150">UT4</OPCION>
     </TARGETS>
   </PREGUNTA>
-  <PREGUNTA TEXTO="MOD1" RESPUESTA="MOD3" ID="1027">
+  <PREGUNTA TEXTO="1" RESPUESTA="3" ID="3168">
     <DRAGS>
+      <OPCION IMAGEN="https://via.placeholder.com/150">8</OPCION>
+      <OPCION IMAGEN="https://via.placeholder.com/150">9</OPCION>
+      <OPCION IMAGEN="https://via.placeholder.com/150">10</OPCION>
       <OPCION IMAGEN="https://via.placeholder.com/150">11</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">22</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">33</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">44</OPCION>
     </DRAGS>
     <TARGETS>
-      <OPCION IMAGEN="https://via.placeholder.com/150">55</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">66</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">77</OPCION>
-      <OPCION IMAGEN="https://via.placeholder.com/150">88</OPCION>
+      <OPCION IMAGEN="https://via.placeholder.com/150">8</OPCION>
+      <OPCION IMAGEN="https://via.placeholder.com/150">9</OPCION>
+      <OPCION IMAGEN="https://via.placeholder.com/150">10</OPCION>
+      <OPCION IMAGEN="https://via.placeholder.com/150">11</OPCION>
     </TARGETS>
   </PREGUNTA>
 </RELACION_DE_COLUMNAS>
