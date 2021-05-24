@@ -1,6 +1,58 @@
-/* Selectores 1 a 5 */
-/* Selectores 6 a 10 */
-/* Selectores 11 a 15 */
+/* 
+
+Selectores 1 a 5 
+
+*/
+
+/*
+
+Selectores 6 a 10 
+
+*/
+
+/* 
+
+Selectores 11 a 15 
+
+*/
+
+/* Selector 11: Selector de atributo igualación comienza conls */
+p[id^="paragraph"] {
+  font-size: 25px;
+  padding: 10px;
+  text-decoration: underline red;
+}
+/* Selector 12: Selector de atributo igualación finaliza con */
+div[id$="-caja"] {
+  background: turquoise;
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  float: left;
+}
+/* Selector 13: Selector de atributo igualación contiene */
+img[title~="flower"] {
+  width: 100px;
+  border: 5px solid yellow;
+}
+/* Selector 14: Selector de atributo igualación múltiple */
+[customatribute] {
+  text-align: center;
+  font-style: italic;
+  font-size: 40px;
+}
+/*  Selector 15: selector de pseudo clase a:visited */
+.url {
+  font-size: 30px;
+  padding: 10px;
+}
+
+a:not(visited) {
+  color: red;
+}
+a:visited {
+  color: green;
+}
 
 /* Otros estilos */
 
@@ -25,7 +77,7 @@ th:not(:last-of-type) {
 .style-container {
   border: 1px solid black;
   height: 300px;
-  margin: 50px 0;
+  margin: 30px 0;
 }
 
 .style-container-text {
