@@ -36,17 +36,137 @@ div > span {
   background-color: DodgerBlue;
 }
 
-/*
 
-Selectores 6 a 10 
+/* Selector 6: Selector descendente */
 
-*/
+    .style-containerB .descendente{
+        background: -webkit-linear-gradient(left, #f3f3f3, #6fff00); 
+        color: rgb(0, 0, 0);
+        border: 2px solid rgb(111, 255, 0);
+        background-color: rgb(177, 112, 112);
+        font-size: 2rem;
+        text-align: center;
+        width: 50%;
+        height: 50%;
+        -webkit-animation: mover 10s infinite  alternate;
+        animation: mover 1s infinite  alternate;
+      }
 
-/* 
+      @-webkit-keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+      }
+      @keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+      }
+ 
+    /* Selector 7: Selector hijo */
+ 
+    .style-containerB > table {
+        border: 1px solid rgb(193, 193, 193);
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        text-align: center;
+    }
 
-Selectores 11 a 15 
+      #tabla tr:nth-child(even){background: -webkit-linear-gradient(left, #f3f3f3, #00ffa2);}
+      
+      #tabla tr:hover {background: -webkit-linear-gradient(left, #f3f3f3, #6fff00);}
+ 
+    /* Selector 8: Selector hermano */
+    
+    h4 ~ i {
+        animation: blink 20s infinite;
+        border-top-left-radius: 10% 50%;
+        border-bottom-left-radius: 10% 50%;
+        border-top-right-radius: 10% 50%;
+        border-bottom-right-radius: 10% 50%;
+      }
 
-*/
+    @keyframes blink{
+        0%{background-color: rgb(210, 210, 210);}
+        20%{background-color: rgb(168, 168, 168);}
+        40%{background-color: rgb(0, 98, 109);}
+        60%{background-color: rgb(0, 18, 20);}
+        80%{background-color: rgb(168, 168, 168);}
+        100%{background-color: rgb(210, 210, 210);}
+    }
+    
+ 
+    /* Selector 9: Selector de universal */
+
+    * {
+        font-family: 'PT Sans Narrow', sans-serif;
+        -webkit-animation-name: entrada;
+        animation-name: entrada;
+        -webkit-animation-duration: 5s;
+        animation-duration: 5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+        /*efectos para selector Universal*/
+        
+        @-webkit-keyframes entrada {
+            0% {
+            opacity: 5;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+            }
+            100% {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+            }
+        }
+        
+        @keyframes entrada {
+            0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+            }
+            100% {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+            }
+        }
+ 
+    /* Selector 10: Selector de atributo igualación exacta */
+
+    input[type=text] {
+        background-color: #006363;
+        border: none;
+        color: #ffffff;
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 16px;
+        margin: auto;
+        width: 17rem;
+        border: 2px solid #f6f6f6;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+      }
+      
+      input[type=text]:focus {
+        background-color: rgb(255, 255, 255);
+        border-bottom: 2px solid #5fbae9;
+      }
+      
+      input[type=text]:placeholder {
+        color: #51ff00;
+      }
+
+
+
 
 /* Selector 11: Selector de atributo igualación comienza conls */
 p[id^="paragraph"] {
@@ -121,3 +241,14 @@ th:not(:last-of-type) {
   width: 80%;
   margin: 0 auto;
 }
+
+.style-containerB {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;    
+    border: 1px solid black;
+    height: 300px;
+    margin: 30px 0;
+  }
