@@ -1,8 +1,40 @@
-/* 
+/* Selector 1: Selector de elemento */
+li {
+  padding: 0px 100px 0px 100px;
+  font-family: Arial;
+  font-size: 11px;
+  background-color: blue;
+  display: inline;
+}
 
-Selectores 1 a 5 
+/* Selector 2: Selector de clase */
+.aviso {
+  padding: 0.5em;
+  border: 1px solid #98be10;
+  background: #f6feda;
+}
+.error {
+  color: #930;
+  font-weight: bold;
+}
 
-*/
+/* Selector 3: Selector de id */
+#destacado { color: red; }
+
+/* Selector 4: Selector de grupo */
+  p {
+  text-align: center;
+  color: rgb(91, 22, 170);
+}
+
+/* Selector 5: Selector de combinado */
+span {
+  background-color: white;
+}
+
+div > span {
+  background-color: DodgerBlue;
+}
 
 /*
 
